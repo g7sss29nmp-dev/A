@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미세플라스틱 웹페이지</title>
+    <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        section {
+            padding: 100px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #1b1b2f;
+        }
+        p {
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        /* 메인 화면 */
+        #main {
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+        #main h1 {
+            font-size: 3em;
+        }
+        /* 버튼 스타일 */
+        .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            background-color: #1b1b2f;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #32324d;
+        }
+        /* 흐름도 */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .step {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin: 15px 0;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        /* 숨김 요소 */
+        .hidden {
+            display: none;
+        }
+        /* 스크롤 스무스 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 메인 화면 -->
+    <section id="main">
+        <h1>보이지 않아도 사라지지 않는 미세플라스틱</h1>
+        <button class="btn" onclick="scrollToSection('problem')">문제 알아보기</button>
+    </section>
+
+    <!-- 문제 설명 섹션 -->
+    <section id="problem">
+        <h2>문제의식</h2>
+        <p>
+            미세플라스틱은 크기가 매우 작아 하수 처리 과정에서도 완전히 제거되지 못하고,
+            결국 하천과 해양 생태계로 유입된다. 수중 생물의 체내에 축적되거나 먹이사슬을 통해 인간에게까지 영향을 미칠 수 있어 심각한 환경 문제로 인식된다.
+        </p>
+        <button class="btn" onclick="toggleSection('idea')">해결 아이디어 보기</button>
+    </section>
+
+    <!-- 해결 아이디어 섹션 -->
+    <section id="idea" class="hidden">
+        <h2>핵심 아이디어</h2>
+        <p>
+            AI를 활용해 수질 데이터를 분석하고, 미세플라스틱 농도가 높은 구간에서 정화 공정이 집중적으로 작동하도록 최적화하는 스마트 수처리 시스템을 제안한다.
+            물질의 특성과 처리 조건에 따라 제거 효율을 높이는 화학공학적 원리를 기반으로 설계되었다.
+        </p>
+        <div class="flowchart">
+            <div class="step">1. 수질 데이터 수집</div>
+            <div class="step">2. AI 분석 및 농도 예측</div>
+            <div class="step">3. 정화 공정 최적화</div>
+            <div class="step">4. 오염 감소 확인</div>
+        </div>
+        <button class="btn" onclick="toggleSection('reflection')">성찰 보기</button>
+    </section>
+
+    <!-- 성찰 섹션 -->
+    <section id="reflection" class="hidden">
+        <h2>성찰</h2>
+        <p>
+            환경 문제를 단순히 보호해야 할 대상으로 보지 않고, 공정과 기술을 통해 개선할 수 있는 구조적 문제로 인식하게 되었다.
+            AI 기반 수처리 아이디어를 구상하며, 화학공학적 사고와 데이터 활용이 환경 문제 해결에 실질적으로 기여할 수 있음을 이해하게 되었고,
+            전공 분야에 대한 관심과 이해가 구체화되었다.
+        </p>
+    </section>
+
+    <script>
+        // 섹션 이동
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+        }
+
+        // 섹션 토글
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            if(section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+                section.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+    </script>
+</body>
+</html>
